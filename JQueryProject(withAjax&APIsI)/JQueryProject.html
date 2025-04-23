@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Project (Starwars Character Generator) </title>
+    <style>
+        /* CSS */
+        .cool-btn {
+        align-items: center;
+        background-clip: padding-box;
+        background-color: #fa6400;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        justify-content: center;
+        line-height: 1.25;
+        margin: 0;
+        min-height: 3rem;
+        padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+        position: relative;
+        text-decoration: none;
+        transition: all 250ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: baseline;
+        width: auto;
+        }
+
+        .cool-btn:hover,
+        .cool-btn:focus {
+        background-color: #fb8332;
+        box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+        }
+
+        .cool-btn:hover {
+        transform: translateY(-1px);
+        }
+
+        .cool-btn:active {
+        background-color: #c85000;
+        box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+        transform: translateY(0);
+        }
+        .body-styling{
+            background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) , url('https://images.unsplash.com/photo-1520034475321-cbe63696469a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        }
+    </style>
+</head>
+<body>
+    
+    <button id="randomize-btn">Randomize btn</button>
+    <div class="character-name"></div>
+    <img class="character-img" src="">
+
+    <div id="intro" style="color: red; font-size: 20px;"><img src="https://images.unsplash.com/photo-1501432377862-3d0432b87a14?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="width: 120px;"> "It works best when you pull the trigger"</div>
+    <!-- Project Description:-
+        1) Randomly get a number between 0 & 88, and go to the mentioned URL and replace the 
+        number in it
+        2) On our page we show the name of the person & their image (we will need innertext,
+        changing an attribute, with a get request, and some random numbers) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> <!--cdn to use jquery as a library-->
+    <script>
+        // vanilla javascript here
+        function getRandomInt(max){
+            return Math.ceil(Math.random() * max) // getting a random number from 1-88.
+        }
+        $(document).ready(function(){
+            // JQuery code here
+            const $randomBtn = $('#randomize-btn');
+            const $characterName = $('.character-name')
+            const $characterImg = $('.character-img')
+            $randomBtn.on('click', function(){
+                let url1 = `https://akabab.github.io/starwars-api/api/id/${getRandomInt(88)}.json`
+                $.get(url1, function(data){
+                    $characterName.text(`${data['name']}`) // adding innertext in div element
+                    $characterImg.attr('src',`${data['image']}`) // adding src link for img element using the attr() function
+                })
+                /* End of basic functionality */
+
+                /*adding css with jquery*/
+                $characterName.css({
+                    padding: '20px',
+                    color: '#f5f5f5',
+                    backgroundColor: '#000',
+                    fontSize:'40px'
+                })
+                $characterImg.css({
+                    display: 'block',
+                    margin: '50px auto',
+                    width: '500px',
+                    height: '500px',
+                    border: 'solid black 10px',
+                    boxShadow: '10px 5px 50px #431e4d',
+                })
+                $randomBtn.addClass("cool-btn") 
+                $('body').addClass('body-styling')
+                $('#intro').remove();
+            })
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav-link:hover, .card-title a:hover, .col.nav-link a:hover{
+    color: blueviolet !important;
+}
+.card-title a:hover{
+    text-decoration: underline !important;
+}
+#first-container{
+    /* background-color: purple; */
+}
+li img{
+    width: 25px;
+    border-radius: 50%;
+    margin-bottom: 4px;
+    margin-left: 25px;
+    margin-right: 4px;
+}
+.tag-icon{
+    margin-left: auto!important;
+}
+/* .col.col-lg.col-md-6{
+    text-align:center !important; 
+} */
+.col.nav-link a{
+    text-decoration: none;
+    color: grey;
+}
+
+.mt-3 div svg{
+    max-width: 100% !important;
+    height: auto !important;
+}

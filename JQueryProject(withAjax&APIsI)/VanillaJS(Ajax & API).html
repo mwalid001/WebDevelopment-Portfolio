@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- To create a page that randomly selects a starwars or pokemon character and 
+     displays some of their information.
+     
+     1- You'll need a button that says randomize or get new character. For this you use an eventListener so when you click a button, it's going to fetch more data, and for that you'll use Math.random() and so you need to know the number of characters on this website (83)
+
+     2- Everytime the button is used you're going to need to use the fetch() API and go to swapi.dev or pokeapi.co  youre going to pull a bunch of information and you will use .then() and another .then()
+
+     3- then grab whatever JSON they're giving me, and once it's parsed in my javascript, change the <body></body>, so change the <div id = "name"></div><div id = "height"></div><div id = "movie"></div>  (the movie that people are in )
+
+     4- then you'll use querySelectors to select those html elements & change them.
+     -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            background-color: #fff;
+            padding: 3px;
+            transition: background-color .2s,
+                        color .2s;
+        }
+        button:hover{
+            background-color: black;
+            color: #fff;
+        }
+       button::selection{
+            background-color: goldenrod;
+        } 
+    </style>
+</head>
+<body>
+    <strong>Name:</strong>
+    <div id="name">...</div>
+
+    <strong>Mass:</strong>
+    <div id="mass">...</div>
+    
+    <strong>height:</strong>
+    <div id="height">...</div>
+
+    <button class="getRandomCharacter">Radomize!</button>
+
+    <script>
+            const name = document.getElementById("name");
+            const height = document.getElementById("height");
+            const mass = document.getElementById("mass");
+            const button = document.querySelector(".getRandomCharacter")
+            button.addEventListener('click', (e) => { // whenever we 'click' event (e) happens...
+                e.preventDefault(); // if it's a form, it will not submit the form (or refresh)
+                name.innerHTML = "<em>Loading ...</em>"; // to show that the elements are loading
+                height.innerHTML = "<em>Loading ...</em>"; // and fetching data for user-
+                mass.innerHTML = "<em>Loading ...</em>";     // -friendliness
+                const random = Math.ceil(Math.random()*83) // every click choose of 83 characters
+                console.log("CLICKED") //every time you click
+                fetch(`https://swapi.dev/api/people/${random}`) //people class
+                    .then(response => response.json())
+                    .then(character => {
+                        console.log(character) // logging character in people/random
+                        name.innerHTML = character["name"];
+                        height.innerHTML = character["height"]
+                        mass.innerHTML = character["mass"]
+                        
+                })
+                    
+            })
+     </script>
+</body>
+</html>
