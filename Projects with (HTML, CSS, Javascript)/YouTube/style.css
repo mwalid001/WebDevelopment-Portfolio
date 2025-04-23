@@ -1,0 +1,563 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none; /*for all lists*/
+}
+
+a{
+    text-decoration: none;
+}
+
+:root{ /*creating color variables*/
+    --dark: #0f0f0f; 
+    --light: #f5f5f5;
+}
+body{
+    /* background-color: var(--dark);
+    color: var(--light); */
+    font-family: Roboto, Arial, sans-serif;
+    background-color: var(--dark);
+}
+
+/* nav here*/
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: var(--dark);
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+}
+
+
+.nav-left{
+    display: flex;
+    width: 140px;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-left .collapse-btn{
+    background-color: var(--dark);
+    color: var(--light);
+    padding-top: 6px;
+    padding-bottom: 27px;
+    padding-left: 7px;
+    padding-right: 27px;
+    border-radius: 50%;
+}
+.nav-left .collapse-btn:hover{
+    filter: brightness(1.5);
+    background-color: rgba(128, 128, 128, .25);
+}
+.nav-left .youtube-logo a div{
+    color: var(--light);
+}
+
+
+nav .nav-middle{
+    display: flex;
+    /* width: 400px; */
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+}
+.nav-middle .searchbox{ /*contains input box, and magnifying glass*/
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+}
+.searchbox #search-btn{
+    cursor: pointer;
+}
+.nav-middle .searchbox span{ /*targeting the magnifying glass*/
+    background-color: rgba(128, 128, 128, .25);
+    text-align: center;
+    padding: 6px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.nav-middle .searchbox div svg{
+    box-sizing: content-box;
+}
+.nav-middle .searchbox input{
+    padding: 10px;
+    /* outline-color: rgba(128, 128, 128, .25); */
+    background-color: transparent;  
+    width: 400px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: rgba(128, 128, 128, .25) solid 1px;
+    color: var(--light);
+}
+.nav-middle .searchbox input:focus{
+    border: none;
+    outline: none;
+}
+
+
+nav .nav-right{
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--light);
+}
+.nav-right .create-btn{
+    background-color: rgba(128, 128, 128, .25);
+    padding: px;
+    padding-right: 6px;
+    padding-left: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-right: -25px;
+}
+.nav-right *{
+    cursor: pointer;
+}
+.nav-right .create-btn span:first-child{/*Editing the "+" sign*/
+    font-size: 30px;
+    margin-right: 10px;
+}
+.nav-right .create-btn span:last-child{
+    font-size: 14px;
+    margin-right: 10px;
+}
+.nav-right .notify-btn button{
+    background-color: transparent;
+    color: var(--light);
+    outline: none;
+    border: none;
+}
+nav .avatar-btn{
+    background-color: darkred;
+    color: var(--light);
+    padding: 8px 14px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-left: -20px;
+}
+.nav-middle .record-btn{
+    
+}
+
+.content-wrapper{
+    position: absolute;
+    width: 90%;
+    max-width: 350px;
+    background: var(--dark);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    /* overflow: hidden; */
+    /* overflow-y: scroll; */
+    top: 108%;
+    right: 3%;
+    max-height: 80vh; /*close settings-menu until its opened via a toggle via javascript*/
+    transition: max-height 0.3s; 
+    padding: 10px;
+    color: var(--light);
+    z-index: 500;
+    background-color: #212121;
+    border-radius: 20px;
+}
+.content-wrapper-height{ /*this class isn't in the html code, it will work only when we use javascript for it.*/
+    max-height: 80vh; /*to make the .settings-menu reappear when we toggle it on (with javascript)*/
+}
+
+.no-show{
+    display: none;
+}
+
+.content-wrapper .inner-content .row{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.content-wrapper .inner-content .row div:first-child{
+    margin-right: 10px;
+    position: sticky;
+    top: 0;
+}
+
+.with-scroll{
+    overflow-y: scroll;
+    max-height: 60vh;
+    scrollbar-color: grey #212121;
+}
+.with-scroll .row{
+    height: 55px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.add-height{
+    max-height: 0;
+}
+/*******************    Content-wrapper-ends   ************************/
+
+/************************** Navbar ends **************************/
+
+.main-container{
+    display: flex;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 10px;
+    gap: 10px;
+}
+
+
+.left-column{
+    flex-basis: 14%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--dark);
+}
+
+/*********Styling ".lists" items in the .left-column of the main-container***********/
+.left-column .list li a{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    color: var(--light);
+}
+/**********end of list elements' styling*****/
+
+.left-column .list li a div{ /*prevent wrapping of YouTube Channel Name*/
+    white-space: nowrap; 
+}
+.left-column .list li a *{
+    margin-right: 5px;
+}
+.left-column .list li .title{
+    color: var(--light);
+}
+.left-column .list li{
+    margin-left: 5px; /*push each list to the right a bit*/
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.left-column .list li img{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.video-details img{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.left-column .list{ /*adding beauty to the lists*/
+    margin-top: 7px;
+    margin-bottom: 7px;
+    padding: 10px;
+}
+.left-column .left-column-end{
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+.left-column .left-column-end p a{
+    color: rgba(128, 128, 128, 1);
+}
+.left-column .left-column-end p:last-child{
+    color: rgba(128, 128, 128, .75);
+    margin-top: 10px;
+}
+
+    /************#Subscriptions**********/
+#subscriptions .active{
+    display: none;
+}
+.all-videos.active{
+    display: none;
+}
+#show-less button, #show-more button{
+    /* justify-self: center; */
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: transparent;
+    color: var(--light);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: background-color .2s;
+}
+/* #show-less button:hover, #show-more button:hover{
+    background-color: rgba(128, 128, 128, .25);
+} */
+/**************Hover Effect*************/
+.left-column li{
+    padding-left: 20px;
+    border-radius: 8px;
+}
+/**************Custom Hover Effect (for each list in .left-container) Start*************/
+
+.content-wrapper .inner-content .with-scroll .row:hover,
+.left-column #subscriptions li:hover:not(:first-child),
+.left-column .more-from-youtube li:hover:not(:first-child), 
+.left-column .list.you li:hover:not(:first-child), 
+.left-column .explore li:hover:not(:first-child), 
+.left-column .send-feedback li:hover, 
+.left-column .list.home li:hover{
+    background-color: rgba(128, 128, 128, .25);;
+}
+/***********************End of Hover Effect(.left-column)***************************/
+
+
+/**************************styling the Explore Section****************/
+.explore li a:first-child{ /*come here */
+    /* margin-right: 300px; */
+}
+
+.main-container .left-column hr, .content-wrapper hr{
+    border-color: rgba(128, 128, 128, .5);
+}
+
+li a div svg{
+    /* color: white;
+    background-color: black; */
+}
+/********************************* end-of-left-column *********************************/
+
+
+
+/******************************** right-column styling: *****************************************/
+.right-column{
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+    /* white-space: nowrap; */
+}
+/**********************************.filter-btns styling********************************/
+.filter-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 70vw;
+    overflow-x: scroll;
+    scrollbar-color: rgba(128, 128, 128, 0.25) #212121;
+}
+.right-column .filter-btns .btn{
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    background: #212121;
+    color: #f5f5f5;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin-right: 5px;
+    margin-bottom: 20px;
+    transition: background-color .2s;
+    cursor: pointer;
+}
+.filter-btns .btn:hover{
+    background-color: 	#353839;
+}
+
+
+/* End of .filter-btns styling */
+
+
+.all-videos{
+    display: flex; /*to contain a couple of videos*/
+    max-width: 100%; /*of the right column*/
+    height: 190px; /*to account for videos' height*/
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+.all-videos .video-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:start;
+    flex-grow: 1;
+    flex-basis: 0; /*so all video-containers would be the same size*/
+    cursor: pointer;
+    margin-right: 10px;
+}
+@media (max-width: 1885px){
+    .video-container:last-child, .short-container:last-child{
+        display: none;
+    }
+}
+@media (max-width: 1652px) {
+    .short-container:nth-last-child(2){ /*unshowing the last sibling*/
+        display: none;
+    }
+}
+@media (max-width: 1505px) {
+    .video-container:nth-last-child(2), .short-container:nth-last-child(3){
+        display: none;
+    }
+    .all-shorts{
+        width: 900px;
+    }
+
+    /*editing left-column & making it responsive*/
+    .list:not(:first-child), .left-column-end{ /*don't display anything in the left-column except the first list*/
+        display: none;
+    }
+    .list.home #profile-item{
+        display: block !important;
+    }
+    .list.home li{
+        margin-bottom: 40px;
+        padding-top: 20px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-bottom: 40px;
+        margin-left: -10px; /*making .left-column narrower*/
+        margin-right: -10px;
+
+    }
+    .list.home li a{
+        flex-direction: column; /*put list items on top of each other*/
+    }
+    .list.home li a div:first-child{
+        margin-bottom: 15px;
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .list.home li a div svg{
+        width: 30px !important;
+        height: 30px !important;
+    }
+    .left-column hr{
+        display: none;
+    }
+
+    /*finished with editing left-column*/
+}
+@media(max-width: 1000px){
+    .video-container:nth-last-child(3), .short-container:nth-last-child(4){
+        display: none;
+    }
+    .all-shorts{
+        width: 700px;
+    }
+    
+}
+
+@media (max-width: 900px){
+
+    /* .left-column{
+        display: none;
+    } */
+
+    /*setting number of videos and shorts for each screen size.*/
+    .video-container:nth-last-child(4), .short-container:nth-last-child(5){
+        display: none;
+    }
+
+    .video-container video:first-child{
+        max-width: 1000px
+    }
+    .all-videos{
+        /* justify-items: center; */
+        margin-bottom: 80px;
+        display: block;
+        text-align: center;
+    }
+    /* .all-videos .video-container video{} */
+    .all-videos .video-details{
+        text-align: left;
+        margin-left: 40px;
+    }
+    .all-videos .video-container:first-child{
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+        /* text-align: center; */
+    }
+    .all-videos .video-container video{
+        max-width: 400px !important;
+    }
+    .all-shorts{
+        width: 100%; 
+        justify-content: center;
+        
+    }
+    .video-container{
+        /* margin-bottom: 800px; */
+    }
+}
+.all-videos .video-container video{
+    max-width: 300px;
+}
+video{
+    border-radius: 5px;
+}
+video:hover{
+    border-radius: 0;
+}
+
+.all-videos .video-container .title{
+    white-space: nowrap;
+    color: var(--light);
+    margin-top: 10px;
+}
+.video-details{
+    display: flex;
+}
+
+.other-info{
+    color: grey;
+}
+
+
+
+.all-shorts{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.short-container{
+    display: flex;
+    flex-direction: column;
+    color: var(--light);
+}
+.short-container video{
+    max-width: 200px;
+    border-radius: 12px;
+}
+.short-container p{
+    margin-top: 9px;
+}
+.short-container p:last-child{
+    color: grey;
+}
+
+
+/************************* end-of-right-column *************************/
