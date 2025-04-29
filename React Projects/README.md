@@ -1,5 +1,5 @@
 # React Projects
-## "Moviebrowser" and "Cryptocurrency" websites are found here.
+## "Moviebrowser" and "Cryptoplace" websites are found here.
 ### For each there is:
   1- a presentation file
   
@@ -9,4 +9,4 @@
 
  ### **"Moviebrowser"** is a website that searches and displays movie information "from TMDB database"
 
- ### **"Cryptocurrency"** is a website that fetches and displays currency details in real time on the cryptocurrency market "from Coingecko database"
+ ### **"Cryptoplace"** is a website that fetches and displays cryptocurrency details in real time on the cryptocurrency market "from Coingecko database"
